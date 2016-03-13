@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <form action="." method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-primary">Войти</button>
+    </form>
+    <a href="{% url "registration" %}">Регистрация</a>
+{% endblock %}

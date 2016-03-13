@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <h1>Список доступных тестов</h1>
+    <ul>
+        {% for item in test_list %}
+            <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

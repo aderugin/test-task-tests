@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block page_body %}
+    <div class="container">
+        {% if request.user.is_authenticated %}<a href="{% url "logout" %}?next={{ request.path }}">Выйти</a>{% endif %}
+        {% block page_content %}{% endblock %}
+    </div>
+{% endblock %}

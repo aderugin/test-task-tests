@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <a href="{% url "tests:test-list" %}">Список тестов</a>
+    <h1>Тест "{{ test.title }}"</h1>
+    {% if form %}
+        <form action="." method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button class="btn btn-primary">Выбрать</button>
+        </form>
+    {% endif %}
+    {% if user_testing.state_done %}
+        <p>Тест пройден</p>
+        <h3>Результат:</h3>
+        <ul>
+            <li><strong>Правильные ответы:</strong> {{ result.0 }}</li>
+            <li><strong>Всего вопросов:</strong> {{ result.1 }}</li>
+            <li><strong>Процент правильных:</strong> {{ result.2|floatformat:"0" }}%</li>
+        </ul>
+    {% endif %}
+{% endblock %}
